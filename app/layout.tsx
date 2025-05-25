@@ -13,7 +13,7 @@ export default function RootLayout({
       baseTheme: dark,
     }}>
       <html lang="es">
-        <body className="bg-black text-white ">
+        <body className="bg-black text-white relative">
           <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,0.15),rgba(255,255,255,0))]"></div>
           <Header />
           <div className='mt-25'>
