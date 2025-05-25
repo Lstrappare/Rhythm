@@ -26,11 +26,11 @@ export default function Header() {
   }, []);
   
   return (
-    <div>
+    <div className='fixed top-0 w-full z-50 bg-black/80'>
     <Lights />
     <header className="p-6 flex justify-between items-center backdrop-blur-xl">
-        <h1 className={`font-bold text-white text-4xl ${codystar.className}`}>Rythm</h1>
-        <h2 className={`${codystar.className} text-lg`}>| {greeting} |</h2>
+        <h1 className={`font-bold text-white text-3xl ${codystar.className}`}>Rhythm</h1>
+        <h2 className={`${codystar.className} text-md`}>| {greeting} |</h2>
     </header>
     </div>
   );

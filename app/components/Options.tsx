@@ -1,37 +1,20 @@
-import Link from "next/link";
-import { Agu_Display } from "next/font/google";
-import { SignInButton } from "@clerk/nextjs";
-
-const agu_display = Agu_Display({
-  weight: '400',
-  subsets: ['latin'],
-})
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
 
 export default function Options() {
-  // 1. Define tus opciones de navegación en un array de objetos
-  const navItems = [
-    { name: "Log in", href: "./dashboard", className: "" }, // Asegúrate de que los href sean correctos
-
-  ];
 
   return (
     <nav className="flex justify-around gap-6">
-      {/* 2. Usa .map() para renderizar cada Link 
-      {navItems.map((item) => (
-
-      ))}*/}
         <SignInButton mode="modal">
-          <p className={`w-full h-full p-10 bg-sky-50/85 text-black text-center rounded-xl text-xl hover:bg-sky-50/50`}>
-          Log in
-          </p>
+          <span className={`relative inline-block px-8 py-4 font-normal text-white rounded-lg cursor-pointer group text-sm mt-6`}>
+            Sign in
+            <span className="absolute inset-0 z-[-1] rounded-lg bg-gradient-to-b from-transparent via-[rgba(8,77,126,0.42)] to-[rgba(8,77,126,0.42)] backdrop-opacity-24 shadow-[inset_0_0_12px_rgba(151,200,255,0.44)]"></span>
+
+            <span className="absolute inset-0 z-[-1] rounded-lg bg-gradient-to-b from-transparent via-[rgba(8,77,126,0.42)] to-[rgba(8,77,126,0.42)] backdrop-opacity-24 shadow-[inset_0_0_12px_rgba(151,200,255,0.44)] opacity-0 transition-all duration-300 ease-in group-hover:opacity-100"></span>
+
+
+            <span className="absolute inset-0 z-[-1] rounded-lg [mask:linear-gradient(white,white)content-box,linear-gradient(white,white)] [mask-composite:xor] bg-gradient-to-r from-[rgba(0,0,0,0.32)] to-[rgba(255,55,55,0.32)]"></span>
+          </span>
         </SignInButton>
-               {/* <Link
-            key={item.name} // Es importante usar una key única para cada elemento en una lista mapeada
-            href={item.href}
-            className={`w-full h-full p-10 bg-sky-50/85 text-black text-center rounded-xl text-xl hover:bg-sky-50/50`} // Combina tus clases de Tailwind
-          >
-            {item.name}
-          </Link>*/}
     </nav>
   );
 }

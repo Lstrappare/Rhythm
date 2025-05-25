@@ -1,6 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import Header from './components/Header';
 import './globals.css';
+import {dark} from '@clerk/themes'
 
 export default function RootLayout({
   children,
@@ -8,12 +9,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark,
+    }}>
       <html lang="es">
-        <body className="bg-black text-white">
-          <div className="relative h-full w-full bg-slate-950 -z-50"><div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div><div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] -z-50"></div></div>
+        <body className="bg-black text-white ">
+          <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,0.15),rgba(255,255,255,0))]"></div>
           <Header />
-          {children}
+          <div className='mt-25'>
+            {children}
+          </div>
         </body>
       </html>
     </ClerkProvider>

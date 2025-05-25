@@ -23,24 +23,26 @@ const lato = Lato({
 export default function Home() {
   return (
     <main>
-      <section className={`mx-15 ${latob.className}`}>
-        <h2 className={`my-6 text-xl`}>Hi! What do you want to do?</h2>
+      <section className={`mx-15 text-center`}>
+        <h2 className={`mt-6 text-xl ${latob.className}`}>Hi! do you want to listen to some music?</h2>
         <SignedOut>
-          <Options />
-        </SignedOut>
-      </section>
-        <SignedIn>
-          <div className={`text-center m-4 ${lato} border-b-2 p-8`}>
-            <Link 
-            href="./dashboard"
-            className="hover:text-sky-50/85 hover:underline text-xl flex gap-2 justify-center">
-              You are already logged in, click here to continue
-              <UserButton/>
-            </Link>
+          <div className={`border-b-2 pb-6`}>
+            <Options />
           </div>
-        </SignedIn>
+        </SignedOut>
+          <SignedIn>
+            <div className={`flex justify-center m-4 ${lato} border-b-2`}>
+              <Link 
+              href="./dashboard"
+              className="hover:text-sky-50/85 hover:underline text-lg flex gap-2 justify-cente mb-4">
+                You are already logged in, click here to continue
+              </Link>
+            </div>
+          </SignedIn>
+          <UserButton/>
+        </section>
       <section className="text-center my-10">
-        <h3 className={`text-3xl ${codystar.className}`}>What is Rythm...</h3>
+        <h3 className={`text-3xl ${codystar.className}`}>What is Rhythm...</h3>
       </section>
     </main>
   );
