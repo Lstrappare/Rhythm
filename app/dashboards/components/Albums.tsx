@@ -77,8 +77,7 @@ export default function Albums() {
   return (
     <div className="relative">
       <div className="text-right mb-3">
-        {/* Botón de subida (comentado como en tu código) */}
-        {/* <button onClick={handleUploadAlbums} ...>Upload Sample Albums</button> */}
+        {/* <button onClick={handleUploadAlbums}>Upload Sample Albums</button> */}
       </div>
 
       {loading && <p>Loading albums... 🎶</p>}

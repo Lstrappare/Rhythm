@@ -4,25 +4,28 @@ import { BatchWriteCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
 
 const TABLE_NAME = 'Albumes';
 const albumsToUpload = [
-  {
-    "id_album": 1,
-    "nombre_album": "Thriller",
-    "artista": "Michael Jackson",
-    "año_publicación": 1982,
-    "género": "Pop, funk, R&B, rock",
-    "foto_portada": "/img/MichaelJackson.png",
-    "canciones": [
-      { "id_cancion": 11, "nombre": "Wanna Be Startin' Somethin'", "compositor": "Michael Jackson", "género": "Post-disco, funk, Afropop", "pista": "/songs/11. Wanna Be Startin' Somethin' - Michael Jackson.mp3" },
-      { "id_cancion": 12, "nombre": "Baby Be Mine", "compositor": "Rod Temperton", "género": "Post-disco, funk", "pista": "/songs/12. Baby Be Mine - Michael Jackson.mp3" },
-      { "id_cancion": 13, "nombre": "The Girl Is Mine", "compositor": "Michael Jackson", "género": "Pop", "pista": "/songs/13. The Girl Is Mine - Michael Jackson.mp3" },
-      { "id_cancion": 14, "nombre": "Thriller", "compositor": "Rod Temperton", "género": "Pop, funk", "pista": "/songs/14. Thriller - Michael Jackson.mp3" },
-      { "id_cancion": 15, "nombre": "Beat It", "compositor": "Michael Jackson", "género": "Hard rock, dance-rock, funk rock", "pista": "/songs/15. Beat It - Michael Jackson.mp3" },
-      { "id_cancion": 16, "nombre": "Billie Jean", "compositor": "Michael Jackson", "género": "Funk, dance-pop, R&B", "pista": "/songs/16. Billie Jean - Michael Jackson.mp3" },
-      { "id_cancion": 17, "nombre": "Human Nature", "compositor": "Steve Porcaro, John Bettis", "género": "Soft rock, R&B", "pista": "/songs/17. Human Nature - Michael Jackson.mp3" },
-      { "id_cancion": 18, "nombre": "P.Y.T. (Pretty Young Thing)", "compositor": "James Ingram, Quincy Jones", "género": "R&B, funk", "pista": "/songs/18. P.Y.T. (Pretty Young Thing) - Michael Jackson.mp3" },
-      { "id_cancion": 19, "nombre": "The Lady in My Life", "compositor": "Rod Temperton", "género": "Pop, soul, quiet storm", "pista": "/songs/19. The Lady in My Life - Michael Jackson.mp3" }
-    ]
-  }
+{
+  "id_album": 2,
+  "nombre_album": "Nevermind",
+  "artista": "Nirvana",
+  "año_publicación": 1991,
+  "género": "Grunge, alternative rock",
+  "foto_portada": "/img/Nevermind.png",
+  "canciones": [
+    { "id_cancion": 20, "nombre": "Smells Like Teen Spirit", "compositor": "Kurt Cobain, Krist Novoselic, Dave Grohl", "género": "Grunge, alternative rock", "pista": "/songs/20. Smells Like Teen Spirit - Nirvana.mp3" },
+    { "id_cancion": 21, "nombre": "In Bloom", "compositor": "Kurt Cobain", "género": "Grunge, alternative rock", "pista": "/songs/21. In Bloom - Nirvana.mp3" },
+    { "id_cancion": 22, "nombre": "Come as You Are", "compositor": "Kurt Cobain", "género": "Grunge, alternative rock", "pista": "/songs/22. Come As You Are - Nirvana.mp3" },
+    { "id_cancion": 23, "nombre": "Breed", "compositor": "Kurt Cobain", "género": "Grunge, punk rock", "pista": "/songs/23. Breed - Nirvana.mp3" },
+    { "id_cancion": 24, "nombre": "Lithium", "compositor": "Kurt Cobain", "género": "Grunge", "pista": "/songs/24. Lithium - Nirvana.mp3" },
+    { "id_cancion": 25, "nombre": "Polly", "compositor": "Kurt Cobain", "género": "Acoustic rock, grunge", "pista": "/songs/25. Polly - Nirvana.mp3" },
+    { "id_cancion": 26, "nombre": "Territorial Pissings", "compositor": "Kurt Cobain", "género": "Hardcore punk, grunge", "pista": "/songs/26. Territorial Pissings - Nirvana.mp3" },
+    { "id_cancion": 27, "nombre": "Drain You", "compositor": "Kurt Cobain", "género": "Grunge", "pista": "/songs/27. Drain You - Nirvana.mp3" },
+    { "id_cancion": 28, "nombre": "Lounge Act", "compositor": "Kurt Cobain", "género": "Grunge", "pista": "/songs/28. Lounge Act - Nirvana.mp3" },
+    { "id_cancion": 29, "nombre": "Stay Away", "compositor": "Kurt Cobain", "género": "Grunge, punk rock", "pista": "/songs/29. Stay Away - Nirvana.mp3" },
+    { "id_cancion": 30, "nombre": "On a Plain", "compositor": "Kurt Cobain", "género": "Grunge, alternative rock", "pista": "/songs/30. On A Plain - Nirvana.mp3" },
+    { "id_cancion": 31, "nombre": "Something in the Way", "compositor": "Kurt Cobain", "género": "Acoustic rock, grunge", "pista": "/songs/31. Something In The Way - Nirvana.mp3" }
+  ]
+}
   // ... puedes añadir más álbumes aquí
 ];
 

@@ -31,7 +31,7 @@ export default function Home() {
           </div>
         </SignedOut>
           <SignedIn>
-            <div className={`flex justify-center m-4 ${lato} border-b-2`}>
+            <div className={`flex justify-center m-4 ${lato.className} border-b-2`}>
               <Link 
               href="./dashboard"
               className="hover:text-sky-50/85 hover:underline text-lg flex gap-2 justify-cente mb-4">
@@ -42,7 +42,22 @@ export default function Home() {
           <UserButton/>
         </section>
       <section className="text-center my-10">
-        <h3 className={`text-3xl ${codystar.className}`}>What is Rhythm...</h3>
+        <h3 className={`text-3xl ${codystar.className}`}>What is <span className="text-cyan-500 font-bold">Rhythm...</span></h3>
+        <div className={`max-w-xl mx-auto text-center px-6 mt-3 ${lato.className}`}>
+          <p className="text-sm mb-2">
+            Rhythm is a music discovery app where you can explore <strong>new songs</strong> and <strong>albums</strong> every day.
+          </p>
+          <p className="text-sm mb-4">
+            Like the tracks you enjoy and save your favorite albums to build your personal collection.
+          </p>
+          <p className="text-lg mb-6">
+            Are you an <strong>artist</strong>? Share your music with the world!
+          </p>
+          
+          <Link href="/" className="inline-block bg-transparent hover:underline text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
+            Click here to continue to Rhythm Artist
+          </Link>
+        </div>
       </section>
     </main>
   );
