@@ -15,7 +15,7 @@ export default function Dashboard() {
     <LikedSongsProvider> {/* Envolver el contenido que necesita acceso al contexto */}
       <main className={`${comfortaa.className} text-xl`}>
         <section className="m-6 ">
-          <h2 className="border-b-1 text-2xl font-semibold mb-4">Listen your Music & albums...</h2>
+          <h2 className="border-b-1 text-2xl font-semibold mb-4">Listen your liked songs...</h2>
           <Playlists />
         </section>
         
