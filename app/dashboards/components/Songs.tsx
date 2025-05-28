@@ -1,6 +1,6 @@
 // app/dashboards/components/Songs.tsx
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react'; // Añadir useMemo
 import { useUser } from '@clerk/nextjs';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/24/outline';
@@ -12,7 +12,7 @@ interface Song {
   "Nombre de la canción": string;
   "Álbum": string;
   "Género": string;
-  "Año de publicación": string;
+  "Año de publicación": string; // Este es string, para la búsqueda lo trataremos como tal
   "Artista": string;
   "Compositor": string;
   "Idioma": string;
@@ -22,29 +22,33 @@ interface Song {
   id_cancion_original?: number;
 }
 
-export default function Songs () {
-  const [songs, setSongs] = useState<Song[]>([]);
-  const [loading, setLoading] = useState(true); // Loading para la lista de canciones
+interface SongsProps { // Definir props para el componente
+  searchTerm: string;
+}
+
+export default function Songs ({ searchTerm }: SongsProps) { // Recibir searchTerm como prop
+  const [allSongs, setAllSongs] = useState<Song[]>([]); // Almacena todas las canciones cargadas
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { isSignedIn } = useUser();
-  const { likedSongIds, toggleLikeSong, isLoadingLikes } = useLikedSongs(); // Usar el contexto
-
-  async function fetchSongs() {
-    try {
-      setLoading(true); setError(null);
-      const response = await fetch('/api/songs');
-      if (!response.ok) throw new Error((await response.json()).error || 'Failed to fetch songs');
-      setSongs(await response.json());
-    } catch (e) { setError((e as Error).message); }
-    finally { setLoading(false); }
-  }
+  const { likedSongIds, toggleLikeSong, isLoadingLikes } = useLikedSongs();
 
   useEffect(() => {
-    fetchSongs();
-  }, []);
+    async function fetchAllInitialSongs() { // Renombrada para claridad
+      try {
+        setLoading(true); setError(null);
+        const response = await fetch('/api/songs');
+        if (!response.ok) throw new Error((await response.json()).error || 'Failed to fetch songs');
+        const data: Song[] = await response.json();
+        setAllSongs(data); // Guardar todas las canciones aquí
+      } catch (e) { setError((e as Error).message); }
+      finally { setLoading(false); }
+    }
+    fetchAllInitialSongs();
+  }, []); // Se ejecuta solo una vez al montar
 
   const handleLikeClick = (song: Song) => {
-    const songDataForPlaylist: PlaylistSongData = { // Usar PlaylistSongData
+    const songDataForPlaylist: PlaylistSongData = {
       id: song.id,
       nombre: song["Nombre de la canción"],
       artista: song.Artista,
@@ -52,22 +56,44 @@ export default function Songs () {
       foto: song.foto,
       pista: song.pista,
     };
-    toggleLikeSong(songDataForPlaylist); // Usar la función del contexto
+    toggleLikeSong(songDataForPlaylist);
   };
 
-  // Considerar mostrar un estado de carga combinado
+  // Filtrar canciones basado en searchTerm usando useMemo para eficiencia
+  const filteredSongs = useMemo(() => {
+    if (!searchTerm.trim()) {
+      return allSongs; // Si no hay término de búsqueda, mostrar todas
+    }
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    return allSongs.filter(song =>
+      song["Nombre de la canción"].toLowerCase().includes(lowerCaseSearchTerm) ||
+      song.Artista.toLowerCase().includes(lowerCaseSearchTerm) ||
+      song.Álbum.toLowerCase().includes(lowerCaseSearchTerm) ||
+      song["Año de publicación"].toString().includes(lowerCaseSearchTerm) // Búsqueda por año
+    );
+  }, [allSongs, searchTerm]);
+
+
   if (loading || isLoadingLikes) {
-    return <p>Loading songs... 🎧</p>;
+    return <p className='text-center py-4'>Loading songs... 🎧</p>;
   }
   
   return(
     <div>
-      {/* ... (error, empty states) ... */}
+      {error && <p className="text-red-400 text-center py-4">Error loading songs: {error}</p>}
       <div className="relative">
-        {!loading && !error && songs.length > 0 && (
+        {(!loading && !error && filteredSongs.length === 0 && searchTerm) && (
+           <p className="text-center text-neutral-400 py-4">No songs found for "{searchTerm}". Try a different search.</p>
+        )}
+        {(!loading && !error && allSongs.length === 0 && !searchTerm) && ( // Mensaje si no hay canciones en absoluto
+           <p className="text-center text-neutral-400 py-4">No songs available at the moment.</p>
+        )}
+
+        {filteredSongs.length > 0 && ( // Mostrar solo si hay canciones filtradas
           <>
             <div className="flex overflow-x-auto space-x-6 pb-4 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-800/50 max-h-100 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-neutral-900 [&::-webkit-scrollbar-thumb]:bg-neutral-800">
-              {songs.map((song) => (
+              {/* Mostrar solo las primeras 10 canciones filtradas, o todas si son menos */}
+              {filteredSongs.slice(0, 10).map((song) => (
                 <div key={song.id} className="flex-none w-50 sm:w-62 bg-sky-500/20 p-4 rounded-lg shadow-lg relative group hover:bg-sky-500/30 transition">
                   {isSignedIn && (
                     <button
@@ -82,9 +108,8 @@ export default function Songs () {
                       )}
                     </button>
                   )}
-                  {/* ... resto del contenido de la tarjeta de canción ... */}
                   <div className='flex justify-center'>
-                    <img src={song.foto} alt={`Cover of ${song["Nombre de la canción"]}`} className="w-11/12 h-1/2 object-cover rounded mb-3" onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/150?text=No+Image'; }} />
+                    <img src={song.foto} alt={`Cover of ${song["Nombre de la canción"]}`} className="w-11/12 h-40 sm:h-48 object-cover rounded mb-3" onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/150?text=No+Image'; }} />
                   </div>
                   <h3 className="text-lg font-bold truncate" title={song["Nombre de la canción"]}>{song["Nombre de la canción"]}</h3>
                   <p className="text-sm text-gray-400 truncate" title={song.Artista}>{song.Artista}</p>
