@@ -213,8 +213,8 @@ export default function Playlists() {
               })}
             </div>
             {/* Fades Laterales */}
-            <span className="absolute left-0 top-0 bottom-0 w-20 pointer-events-none bg-gradient-to-r from-black to-transparent" />
-            <span className="absolute right-0 top-0 bottom-0 w-20 pointer-events-none bg-gradient-to-l from-black to-transparent" />
+            <span className="absolute left-0 top-0 bottom-0 w-20 pointer-events-none bg-gradient-to-r from-black/90 to-transparent" />
+            <span className="absolute right-0 top-0 bottom-0 w-20 pointer-events-none bg-gradient-to-l from-black/90 to-transparent" />
           </>
         )}
       </div>

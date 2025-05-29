@@ -52,7 +52,7 @@ export async function POST(req: Request) {
         ':songs': newSongsArray,
         ':pn': 'Liked Songs',
         ':els': true,
-        ':fp': newSongsArray.length > 0 ? newSongsArray[0].foto : '/img/default_playlist_cover.png',
+        ':fp':'/img/LikedSongs.png',
       },
       ReturnValues: 'UPDATED_NEW',
     };

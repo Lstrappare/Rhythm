@@ -24,7 +24,7 @@ export default function Dashboard() {
       <main className={`${comfortaa.className} text-xl`}>
         <section className="m-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="border-b-1 text-2xl w-auto sm:w-9/12 font-semibold">Listen your playlists...</h2>
+            <h2 className="border-b-1 text-2xl w-11/12 sm:w-9/12 font-semibold">Listen your playlists...</h2>
             <button
               onClick={() => setIsCreatePlaylistModalOpen(true)}
               className="p-1 sm:p-2 text-white hover:text-sky-400 transition-colors"
@@ -37,8 +37,8 @@ export default function Dashboard() {
         </section>
         
         <section className="m-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-              <h2 className="border-b-1 w-full sm:w-auto text-2xl font-semibold mb-2 sm:mb-0">Discover new music...</h2>
+            <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-4 gap-2">
+              <h2 className="border-b-1 sm:w-9/12 w-full text-2xl font-semibold mb-2">Discover new music...</h2>
               <div className="relative w-full sm:w-auto sm:max-w-xs">
                 <input
                   type="text"
@@ -52,10 +52,9 @@ export default function Dashboard() {
             </div>
             <Songs searchTerm={songSearchTerm} /> 
         </section>
-
         <section className="m-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-            <h2 className="border-b-1 w-full sm:w-auto text-2xl font-semibold mb-2 sm:mb-0">Discover new albums...</h2>
+          <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-4 gap-2">
+            <h2 className="border-b-1 sm:w-9/12 w-full text-2xl font-semibold mb-2">Discover new albums...</h2>
             <div className="relative w-full sm:w-auto sm:max-w-xs">
                 <input
                   type="text"
