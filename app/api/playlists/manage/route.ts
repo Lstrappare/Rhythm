@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
           ':songs': updatedSongs,
           ':fp': updatedSongs.length > 0 ? updatedSongs[0].foto : '/img/default_playlist_cover.png',
         },
-        ReturnValues: 'ALL_NEW', // Devuelve todo el item actualizado
+        ReturnValues: 'ALL_NEW' as const, // Devuelve todo el item actualizado
       };
       const result = await docClient.send(new UpdateCommand(updateParams));
       return NextResponse.json({ 
