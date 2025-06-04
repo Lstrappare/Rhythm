@@ -4,7 +4,7 @@ import { getAuth } from '@clerk/nextjs/server';
 import docClient from '@/lib/dynamodb';
 import { PutCommand } from '@aws-sdk/lib-dynamodb';
 import { v4 as uuidv4 } from 'uuid'; // Para generar IDs de playlist únicos
-
+import { NextRequest } from 'next/server';
 const PLAYLISTS_TABLE_NAME = 'Playlists';
 
 interface PlaylistSongData { // Debe coincidir con la que se envía desde el modal
@@ -21,7 +21,7 @@ interface CreatePlaylistPayload {
   canciones: PlaylistSongData[];
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
     if (!userId) {

@@ -3,11 +3,12 @@ import { NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
 import docClient from '@/lib/dynamodb';
 import { QueryCommand } from '@aws-sdk/lib-dynamodb';
+import { NextRequest } from 'next/server';
 
 const PLAYLISTS_TABLE_NAME = 'Playlists';
 const LIKED_SONGS_PLAYLIST_ID = '__LIKED_SONGS__';
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
     if (!userId) {

@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
 import docClient from '@/lib/dynamodb'; // Tu cliente DynamoDB existente
 import { PutCommand, DeleteCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
+import { NextRequest } from 'next/server';
 
 const USER_FAVORITE_ALBUMS_TABLE_NAME = 'UserFavoriteAlbums'; // Nombre de tu nueva tabla
 
@@ -16,7 +17,7 @@ export interface FavoriteAlbumPayload {
 }
 
 // GET: Obtener todos los álbumes favoritos del usuario
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
     if (!userId) {
@@ -53,7 +54,7 @@ export async function GET(req: Request) {
 }
 
 // POST: Añadir o quitar un álbum de favoritos
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
     if (!userId) {

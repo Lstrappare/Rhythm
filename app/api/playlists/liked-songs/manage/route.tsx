@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
 }
 
 // NUEVA función GET para obtener los IDs de las canciones likeadas
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
     if (!userId) {

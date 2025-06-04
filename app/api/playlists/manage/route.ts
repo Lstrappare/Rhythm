@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
 import docClient from '@/lib/dynamodb';
 import { UpdateCommand, DeleteCommand, GetCommand } from '@aws-sdk/lib-dynamodb';
-
+import { NextRequest } from 'next/server';
 const PLAYLISTS_TABLE_NAME = 'Playlists';
 const LIKED_SONGS_PLAYLIST_ID_CONST = '__LIKED_SONGS__'; // Constante para ID de Liked Songs
 
@@ -17,7 +17,7 @@ interface PlaylistSong {
   pista: string;
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
     if (!userId) {
