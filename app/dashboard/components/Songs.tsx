@@ -5,7 +5,7 @@ import { useUser } from '@clerk/nextjs';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/24/outline';
 import { useLikedSongs, PlaylistSongData } from '@/app/contexts/LikedSongsContext'; // Ajusta la ruta
-
+import ManagedAudioPlayer from './ManagedAudioPlayer';
 // Tu interfaz Song existente
 interface Song {
   id: string;
@@ -114,7 +114,7 @@ export default function Songs ({ searchTerm }: SongsProps) { // Recibir searchTe
                   <h3 className="text-lg font-bold truncate" title={song["Nombre de la canción"]}>{song["Nombre de la canción"]}</h3>
                   <p className="text-sm text-gray-400 truncate" title={song.Artista}>{song.Artista}</p>
                   <p className="text-xs text-gray-500">{song.Álbum}</p>
-                  <audio controls src={song.pista} className="w-full mt-3 h-8" preload="metadata">Your browser does not support the audio element.</audio>
+                  <ManagedAudioPlayer controls src={song.pista} className="w-full mt-3 h-8" preload="metadata">Your browser does not support the audio element.</ManagedAudioPlayer>
                 </div>
               ))}
             </div>

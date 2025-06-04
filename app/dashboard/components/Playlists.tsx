@@ -8,6 +8,7 @@ import { HeartIcon as HeartIconOutline } from '@heroicons/react/24/outline';
 import { TrashIcon, XMarkIcon } from '@heroicons/react/24/outline'; // Para cerrar el flip
 import { XMarkIcon as XMarkSmallIcon } from '@heroicons/react/20/solid'; // Para quitar canción
 import { useLikedSongs, PlaylistSongData } from '@/app/contexts/LikedSongsContext'; // Ajusta la ruta
+import ManagedAudioPlayer from './ManagedAudioPlayer';
 
 // Interfaces (PlaylistSongDisplay, PlaylistDisplay) ...
 interface PlaylistSongDisplay {
@@ -199,7 +200,7 @@ export default function Playlists() {
                                   )}
                                 </div>
                               </div>
-                              <audio controls src={song.pista} className="w-full h-7" preload="metadata">Your browser does not support the audio element.</audio>
+                              <ManagedAudioPlayer controls src={song.pista} className="w-full h-7" preload="metadata">Your browser does not support the audio element.</ManagedAudioPlayer>
                             </li>
                           ))}
                            {(!playlist.canciones || playlist.canciones.length === 0) && (

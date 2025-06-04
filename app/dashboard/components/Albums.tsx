@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from 'react'; // Añadir useMemo
 import { motion } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline'; // Para el botón de cerrar en la cara trasera
+import ManagedAudioPlayer from './ManagedAudioPlayer'; // Importar el nuevo componente
 
 interface AlbumSong {
   id_cancion: number;
@@ -154,9 +155,9 @@ export default function Albums({ searchTerm }: AlbumsProps) { // Recibir searchT
                           {album.canciones.map(song => (
                             <li key={song.id_cancion} className="text-xs"> {/* Reducido tamaño de fuente para tracks */}
                               <p className="text-neutral-200 truncate font-medium" title={song.nombre}>{song.nombre}</p>
-                              <audio controls src={song.pista} className="w-full h-7 mt-1" preload="metadata"> {/* Reducido h-7 */}
+                              <ManagedAudioPlayer controls src={song.pista} className="w-full h-7 mt-1" preload="metadata"> {/* Reducido h-7 */}
                                 Your browser does not support the audio element.
-                              </audio>
+                              </ManagedAudioPlayer>
                             </li>
                           ))}
                            {(!album.canciones || album.canciones.length === 0) && (
