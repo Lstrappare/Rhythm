@@ -1,6 +1,6 @@
 import Options from "./components/Options";
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import { Lato } from "next/font/google";
 import { Codystar } from 'next/font/google'
@@ -54,7 +54,7 @@ export default function Home() {
             Are you an <strong>artist</strong>? Share your music with the world!
           </p>
           
-          <Link href="/" className="inline-block bg-transparent hover:underline text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
+          <Link href="/" className="inline-block hover:underline text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
             Click here to continue to Rhythm Artist
           </Link>
         </div>
