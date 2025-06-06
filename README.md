@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/83f406c9-3d04-45d1-9534-9e9e2f30ed1a" alt="Rhythm App Banner" width="100%" />
+  <h1>🎧 Rhythm</h1>
+  <p>Una plataforma web para escuchar música, marcar tus canciones favoritas y crear playlists personalizadas.</p>
+</div>
 
-## Getting Started
+---
 
-First, run the development server:
+## 🚀 Tecnologías utilizadas
+
+- [Next.js 14](https://nextjs.org/) — Framework React para SSR y rutas.
+- [Tailwind CSS](https://tailwindcss.com/) — Estilos rápidos y responsivos.
+- [Clerk](https://clerk.dev/) — Autenticación de usuarios.
+- [DynamoDB (AWS)](https://aws.amazon.com/dynamodb/) — Base de datos NoSQL.
+- [Heroicons](https://heroicons.com/) — Íconos SVG bonitos y accesibles.
+- [Bun](https://bun.sh/) — Runtime rápido para JavaScript/TypeScript.
+
+---
+
+## 🛠 Instalación
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# Clona el repositorio
+git clone https://github.com/Lstrappare/rhythm.git
+cd rhythm
+
+# Instala dependencias
+bun install
+
+# Ejecuta en desarrollo
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔐 Variables de entorno
+Crea un archivo .env con las siguientes variables:
+```bash
+# AWS Credentials
+AWS_ACCESS_KEY_ID=your_key
+AWS_SECRET_ACCESS_KEY=your_secret
+AWS_REGION=your_region
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Clerk Credentials
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_public_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Estructura del proyecto
+```bash
+.rhythm/
+├── app/                # Componentes, páginas y lógica principal
+├── lib/                # Funciones auxiliares y utilidades
+├── public/             # Recursos estáticos (imágenes, íconos)
+├── .vscode/            # Configuración del editor
+├── .env                # Variables de entorno
+├── README.md           # Este archivo
+├── package.json        # Scripts y dependencias
+└── ...
+```
+## 🤝 ¿Quieres colaborar?
+¡Claro que sí! Este proyecto está abierto a colaboración. Puedes:
+- Reportar bugs o sugerencias.
+- Proponer nuevas funcionalidades.
+- Mejorar el diseño o rendimiento.
+- Abrir un PR si ya tienes una mejora lista.
 
-## Learn More
+## 📄 Licencia
+Este proyecto está bajo la licencia MIT. Puedes usarlo libremente siempre que respetes los términos de la licencia.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📬 Contacto
+- Email: j.m.cisval1@gmail.com
+- Portafolio: https://lstrappare.github.io/Portafolio
+- LinkedIn: linkedin.com/in/josemanuel-cisneros
+## ¡Gracias por visitar Rhythm! 🎶
