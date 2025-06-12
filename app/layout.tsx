@@ -2,6 +2,13 @@ import { ClerkProvider } from '@clerk/nextjs';
 import Header from './components/Header';
 import './globals.css';
 import {dark} from '@clerk/themes'
+import Footer from './components/Footer';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Rhythm",
+  description: "Una plataforma web para escuchar música, marcar tus canciones favoritas y crear playlists personalizadas.",
+};
 
 export default function RootLayout({
   children,
@@ -19,6 +26,7 @@ export default function RootLayout({
           <div className='mt-25'>
             {children}
           </div>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

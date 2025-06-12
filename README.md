@@ -8,12 +8,12 @@
 
 ## 🚀 Tecnologías utilizadas
 
-- [Next.js 14](https://nextjs.org/) — Framework React para SSR y rutas.
-- [Tailwind CSS](https://tailwindcss.com/) — Estilos rápidos y responsivos.
-- [Clerk](https://clerk.dev/) — Autenticación de usuarios.
-- [DynamoDB (AWS)](https://aws.amazon.com/dynamodb/) — Base de datos NoSQL.
-- [Heroicons](https://heroicons.com/) — Íconos SVG bonitos y accesibles.
-- [Bun](https://bun.sh/) — Runtime rápido para JavaScript/TypeScript.
+- [Next.js 15](https://nextjs.org/) — Framework React para SSR, rutas y layouts modernos.
+- [Tailwind CSS](https://tailwindcss.com/) — Framework de estilos utilitario para diseño responsivo.
+- [Clerk](https://clerk.dev/) — Plataforma de autenticación y gestión de usuarios.
+- [AWS DynamoDB](https://aws.amazon.com/dynamodb/) — Base de datos NoSQL rápida y escalable.
+- [Heroicons](https://heroicons.com/) — Conjunto de íconos SVG bonitos y accesibles.
+- [Bun](https://bun.sh/) — Runtime moderno para JavaScript/TypeScript (reemplazo de Node.js).
 
 ---
 
@@ -63,11 +63,26 @@ CLERK_SECRET_KEY=your_clerk_secret_key
 - Mejorar el diseño o rendimiento.
 - Abrir un PR si ya tienes una mejora lista.
 
-## 📄 Licencia
-Este proyecto está bajo la licencia MIT. Puedes usarlo libremente siempre que respetes los términos de la licencia.
-
 ## 📬 Contacto
 - Email: j.m.cisval1@gmail.com
 - Portafolio: https://lstrappare.github.io/Portafolio
 - LinkedIn: linkedin.com/in/josemanuel-cisneros
+
+## 📄 Licencia
+Este proyecto está bajo la licencia MIT. Puedes usarlo libremente siempre que respetes los términos de la licencia.
+
+Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+
+## 📄 Licencias de dependencias
+
+Este proyecto utiliza tecnologías de terceros, las cuales mantienen sus propias licencias de uso.  
+Consulta sus sitios oficiales para más información.
+
+- Next.js: MIT
+- Tailwind CSS: MIT
+- Clerk: Propietaria (gratis para uso limitado)
+- AWS DynamoDB: Servicio bajo AWS (comercial)
+- Heroicons: MIT
+- Bun: MIT
+
 ## ¡Gracias por visitar Rhythm! 🎶

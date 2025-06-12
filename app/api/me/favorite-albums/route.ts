@@ -1,11 +1,11 @@
 // app/api/me/favorite-albums/route.ts
 import { NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
-import docClient from '@/lib/dynamodb'; // Tu cliente DynamoDB existente
+import docClient from '@/lib/dynamodb'; 
 import { PutCommand, DeleteCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
 import { NextRequest } from 'next/server';
 
-const USER_FAVORITE_ALBUMS_TABLE_NAME = 'UserFavoriteAlbums'; // Nombre de tu nueva tabla
+const USER_FAVORITE_ALBUMS_TABLE_NAME = 'UserFavoriteAlbums'; // Nombre de la nueva tabla
 
 // Interfaz para los datos del álbum que se envían desde el cliente y se guardan
 export interface FavoriteAlbumPayload {
@@ -30,7 +30,6 @@ export async function GET(req: NextRequest) {
       ExpressionAttributeValues: {
         ':uid': userId,
       },
-      // No necesitas ProjectionExpression si quieres todos los atributos denormalizados
     };
 
     const { Items } = await docClient.send(new QueryCommand(params));
@@ -42,7 +41,7 @@ export async function GET(req: NextRequest) {
       artista: item.artista,
       foto_portada: item.foto_portada,
       año_publicación: item.año_publicación,
-      fecha_agregado: item.fecha_agregado, // Si lo guardaste
+      fecha_agregado: item.fecha_agregado, // Si se guarda
     })) || [];
 
     return NextResponse.json(favoriteAlbums);

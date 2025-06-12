@@ -94,7 +94,7 @@ export default function Songs ({ searchTerm }: SongsProps) { // Recibir searchTe
             <div className="flex overflow-x-auto space-x-6 pb-4 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-800/50 max-h-100 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-neutral-900 [&::-webkit-scrollbar-thumb]:bg-neutral-800">
               {/* Mostrar solo las primeras 10 canciones filtradas, o todas si son menos */}
               {filteredSongs.slice(0, 10).map((song) => (
-                <div key={song.id} className="flex-none w-50 sm:w-62 bg-sky-500/20 p-4 rounded-lg shadow-lg relative group hover:bg-sky-500/30 transition">
+                <div key={song.id} className="flex-none w-50 sm:w-62 bg-sky-500/20 p-4 rounded-lg shadow-lg relative group hover:bg-sky-500/35 transition">
                   {isSignedIn && (
                     <button
                       onClick={() => handleLikeClick(song)}

@@ -1,12 +1,10 @@
 // app/api/songs/route.ts
 import { NextResponse } from 'next/server';
-import docClient from '@/lib/dynamodb'; // Ajusta la ruta si es necesario
+import docClient from '@/lib/dynamodb'; 
 import { BatchWriteCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
 
-const TABLE_NAME = 'Canciones'; // El nombre de tu tabla en DynamoDB
+const TABLE_NAME = 'Canciones'; 
 
-// Tus JSON de canciones de ejemplo
-// (Asegúrate de que las rutas de 'pista' y 'foto' sean correctas y los archivos existan en 'public/')
 const songsToUpload = [
 {
     "id_cancion": 20,
@@ -184,7 +182,7 @@ export async function POST() {
         "País de origen": song["País de origen"],
         "pista": song.pista,
         "foto": song.foto,
-        "id_cancion_original": song.id_cancion // Guardamos el id numérico original si es útil
+        "id_cancion_original": song.id_cancion 
       }
     }
   }));
@@ -193,8 +191,6 @@ export async function POST() {
     return NextResponse.json({ message: 'No songs to upload' }, { status: 400 });
   }
 
-  // BatchWriteCommand puede manejar hasta 25 items.
-  // Si tienes más, necesitarás dividirlos en múltiples lotes.
   const params = {
     RequestItems: {
       [TABLE_NAME]: putRequests.slice(0, 25) // Procesamos hasta 25 items
@@ -203,7 +199,6 @@ export async function POST() {
 
   try {
     await docClient.send(new BatchWriteCommand(params));
-    // Si tienes más de 25 canciones, aquí deberías implementar la lógica para enviar los lotes restantes.
     return NextResponse.json({ message: `Successfully uploaded ${putRequests.length} songs!` });
   } catch (error) {
     console.error('Error uploading songs to DynamoDB:', error);

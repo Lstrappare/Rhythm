@@ -26,7 +26,6 @@ const albumsToUpload = [
     { "id_cancion": 31, "nombre": "Something in the Way", "compositor": "Kurt Cobain", "género": "Acoustic rock, grunge", "pista": "/songs/31. Something In The Way - Nirvana.mp3" }
   ]
 }
-  // ... puedes añadir más álbumes aquí
 ];
 
 export async function POST() {

@@ -29,7 +29,6 @@ export async function GET(req: NextRequest) {
     const sortedItems = Items?.sort((a, b) => {
       if (a.playlist_id === LIKED_SONGS_PLAYLIST_ID) return -1;
       if (b.playlist_id === LIKED_SONGS_PLAYLIST_ID) return 1;
-      // Aquí podrías añadir más lógica de ordenación (ej. por nombre_playlist, fecha_creacion)
       return (a.nombre_playlist || '').localeCompare(b.nombre_playlist || '');
     }) || [];
 

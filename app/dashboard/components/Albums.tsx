@@ -62,8 +62,6 @@ export default function Albums({ searchTerm }: AlbumsProps) { // Recibir searchT
     fetchInitialAlbums();
   }, []); // Se ejecuta solo una vez al montar
 
-  // const handleUploadAlbums = async () => { ... }; // Tu función existente
-
   // Filtrar álbumes basado en searchTerm usando useMemo
   const filteredAlbums = useMemo(() => {
     if (!searchTerm.trim()) {
@@ -74,8 +72,6 @@ export default function Albums({ searchTerm }: AlbumsProps) { // Recibir searchT
       album.nombre_album.toLowerCase().includes(lowerCaseSearchTerm) ||
       album.artista.toLowerCase().includes(lowerCaseSearchTerm) ||
       album.año_publicación.toString().includes(lowerCaseSearchTerm) // Búsqueda por año
-      // Podrías añadir búsqueda por género si lo deseas:
-      // || album.género.toLowerCase().includes(lowerCaseSearchTerm)
     );
   }, [allAlbums, searchTerm]);
 
