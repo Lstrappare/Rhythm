@@ -30,7 +30,7 @@ export default function Header() {
     <Lights />
     <header className="p-6 flex justify-between items-center backdrop-blur-xl">
         <h1 className={`font-bold text-white text-3xl ${codystar.className}`}>Rhythm</h1>
-        <h2 className={`${codystar.className} text-md`}>| {greeting} |</h2>
+        <h2 className={`${codystar.className} text-base sm:text-xl`}>| {greeting} |</h2>
     </header>
     </div>
   );
